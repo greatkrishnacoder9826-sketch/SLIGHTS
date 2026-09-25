@@ -46,16 +46,6 @@ python main.py
 | F     | Toggle fullscreen                         |
 | V     | Export the animation to `output/sister_reveal.mp4` |
 
-## Why it now looks smooth, not blocky
-
-Earlier the reveal drew thousands of hard-edged rectangles directly, which
-reads as flat "digital confetti." Now each frame is built as a tiny
-per-pixel-alpha grid (one pixel per reveal cell) and blown up with
-`pygame.transform.smoothscale`, which blends neighbouring cells into soft,
-organic patches — plus a cheap bloom pass (shrink → blur → grow) adds a
-premium glow. If you want it even softer, lower `PIXEL_SIZE` (e.g. to 2 or
-3); if you want it snappier/cheaper on older hardware, raise it.
-
 ## How the reveal works
 
 The photo is divided into small blocks (`PIXEL_SIZE`, default 4px). Each
